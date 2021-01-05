@@ -7,6 +7,7 @@ function App() {
   return (
     <div>
       <Layout>
+        <p>App.Js burger Builder imported below</p>
         <BurgerBuilder />
       </Layout>
 
