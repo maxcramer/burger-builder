@@ -17,12 +17,12 @@ class Layout extends Component {
     render() {
         return (
             <Aux>
-            <Toolbar openToolBar={this.sideDrawerHandler}/>
-            <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerHandler} />
-            <main className="Content">
-                {this.props.children}
-            </main>
-    </Aux>
+                <Toolbar openToolBar={this.sideDrawerHandler}/>
+                <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerHandler} />
+                <main className="Content">
+                    {this.props.children}
+                </main>
+            </Aux>
         )
     }
 };
