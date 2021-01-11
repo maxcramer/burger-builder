@@ -9,11 +9,14 @@ import Logo from '../../Logo/Logo';
 import './SideDrawer.css';
 
 const sideDrawer = (props) => {
-
+    let attachedClasses = [`SideDrawer Close`];
+    if(props.open) {
+        attachedClasses = [`SideDrawer Open`]
+    } 
     return (
         <Aux>
         <Backdrop show={props.open} clicked={props.closed}/>
-        <div className="SideDrawer">
+        <div className={attachedClasses.join(' ')}>
             <div className="LogoContainer">
                 <Logo />
             </div>
