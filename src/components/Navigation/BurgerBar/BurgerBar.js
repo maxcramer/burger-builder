@@ -4,9 +4,9 @@ import './BurgerBar.css';
 
 const burgerBar = (props) => (
     <div className="BB_Container" onClick={props.click}>
-        <div className="BB-Line"></div>
-        <div className="BB-Line"></div>
-        <div className="BB-Line"></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 );
 

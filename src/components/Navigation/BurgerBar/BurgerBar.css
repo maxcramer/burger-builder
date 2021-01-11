@@ -6,7 +6,7 @@
     justify-content: space-between;
 }
 
-.BB-Line {
+.BB_Container div {
     width: 40px;
     background-color: white;
     height: 3px;
