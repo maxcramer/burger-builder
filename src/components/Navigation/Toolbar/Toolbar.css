@@ -11,7 +11,7 @@
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
-    color: white;
+    /* color: white; */
 }
 
 .Toolbar nav {
