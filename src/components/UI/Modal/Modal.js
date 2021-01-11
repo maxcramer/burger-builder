@@ -7,7 +7,7 @@ import './Modal.css';
 
 const modal = (props) => (
     <Aux>
-        <Backdrop show={props.show} />
+        <Backdrop show={props.show} clicked={props.modalClosed} />
     <div 
         className="Modal"
         style={{
