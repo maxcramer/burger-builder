@@ -1,6 +1,8 @@
 import React from 'react';
 
 import NavigationItems from '../NavigationItems/NavigationItems';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import Aux from '../../../hoc/Aux';
 
 import Logo from '../../Logo/Logo';
 
@@ -9,12 +11,17 @@ import './SideDrawer.css';
 const sideDrawer = (props) => {
 
     return (
-    <div className="SideDrawer">
-        <Logo height="11%"/>
-        <nav>
-            <NavigationItems />
-        </nav>
-    </div>
+        <Aux>
+        <Backdrop />
+        <div className="SideDrawer">
+            <div className="LogoContainer">
+                <Logo />
+            </div>
+            <nav>
+                <NavigationItems />
+            </nav>
+        </div>
+        </Aux>
     );
 };
 
