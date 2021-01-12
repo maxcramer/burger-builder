@@ -9,7 +9,7 @@
 .BB_Container div {
     width: 40px;
     background-color: white;
-    height: 3px;
+    height: 4px;
 }
 
 @media (min-width: 500px) {
