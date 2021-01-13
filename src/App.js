@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
-function App() {
-  return (
-    <div>
-      <Layout>
-        <p>App.Js burger Builder imported below</p>
-        <BurgerBuilder />
-      </Layout>
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Layout>
+          <BurgerBuilder /> 
+        </Layout>
+  
+      </div>
+    );
+  }
 
-    </div>
-  );
 }
 
 export default App;
