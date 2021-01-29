@@ -26,3 +26,9 @@
     outline: none;
     background-color: #ccc;
 }
+
+.Invalid {
+    background-color: salmon;
+    color: white;
+    border: 1px solid red;
+}
