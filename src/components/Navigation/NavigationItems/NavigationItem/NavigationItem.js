@@ -9,6 +9,8 @@ const navigationItem = (props) => (
     <li className="NavigationItem">
         <NavLink
         to={props.link}
+        activeClassName="active"
+        exact={props.exact}
         // className={`${props.active ? 'active' : '' }`}
         >
             {props.children}
