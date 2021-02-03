@@ -58,18 +58,6 @@ class BurgerBuilder extends Component{
             disableInfo[key] = disableInfo[key] <= 0;
         }
         let orderSummary = null;
-        if(this.props.ingredients) {
-            orderSummary =  <OrderSummary 
-            ingredients={this.state.ingredients}
-            orderCancelled={this.orderCancelHandler}
-            orderContinue={this.orderContinueHandler}
-            price={this.props.price}
-        />
-        }
-        
-        if(this.state.loading) {
-            orderSummary = <Spinner />;
-        }
         let burger = this.state.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
 
         if(this.props.ings) {
@@ -86,8 +74,19 @@ class BurgerBuilder extends Component{
             />
     
                 </Aux>
-            )
+            );
+            orderSummary =  <OrderSummary 
+            ingredients={this.props.ings}
+            orderCancelled={this.orderCancelHandler}
+            orderContinue={this.orderContinueHandler}
+            price={this.props.price}
+        />
         }
+        
+        if(this.state.loading) {
+            orderSummary = <Spinner />;
+        }
+
 
         return (
             <Aux>

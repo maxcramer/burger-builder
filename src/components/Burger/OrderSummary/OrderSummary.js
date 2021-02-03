@@ -4,19 +4,21 @@ import Aux from '../../../hoc/Aux/Aux'
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-    componentDidUpdate() {
+    componentWillUpdate() {
         console.log('[OrderSummary] ComponentDidUpdate')
     }
     render() {
         const ingredientSummary = Object.keys(this.props.ingredients)
         .map(igKey => {
-            return <li key={igKey}>
+            return (
+             <li key={igKey}>
                     <span style={{ textTransform: 'capitalize' }}>
                         {igKey}
                     </span>
                     : {this.props.ingredients[igKey]}
                 </li>
-        })
+            )   
+        });
         return (
             <Aux>
                 <h3>Order Summary</h3>
@@ -31,10 +33,6 @@ class OrderSummary extends Component {
             </Aux>
         )
     }
-   
-
-
-
 };
 
 export default OrderSummary
