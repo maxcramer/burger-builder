@@ -171,7 +171,7 @@ class ContactData extends Component{
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
 
-        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid})
+        this.setState({orderForm: updatedOrderForm, formIsValid: !formIsValid})
     }   
 
     render() {
