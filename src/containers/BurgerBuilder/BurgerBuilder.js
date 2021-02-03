@@ -25,14 +25,6 @@ class BurgerBuilder extends Component{
 
     componentDidMount () {
 
-        // axios.get('https://react-burger-bar-ed94a-default-rtdb.firebaseio.com/ingredients.json')
-        //     .then(response => {
-        //         console.log('RESPONSE', response.data)
-        //         this.setState({ingredients: response.data})
-        //     })
-        //     .catch(error => {
-        //         this.setState({error: true})
-        //     })
     }
 
     updatePurchaseState (ingredients) {
@@ -46,36 +38,6 @@ class BurgerBuilder extends Component{
             this.setState({purchasable: sum > 0});
     }
 
-    addIngredientHandler = (type) => {
-        const oldCount = this.state.ingredients[type];
-        const updatedCount = oldCount + 1;
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
-        updatedIngredients[type] = updatedCount;
-        const priceAddition = INGREDIENT_PRICES[type];
-        const oldPrice = this.state.totalPrice;
-        const newPrice = oldPrice + priceAddition;
-        this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
-        this.updatePurchaseState(updatedIngredients);
-    }
-
-    removeIngredientHandler = (type) => {
-        const oldCount = this.state.ingredients[type];
-        if(oldCount <= 0) {
-            return;
-        }
-        const updatedCount = oldCount - 1;
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
-        updatedIngredients[type] = updatedCount;
-        const priceReduction = INGREDIENT_PRICES[type];
-        const oldPrice = this.state.totalPrice;
-        const newPrice = oldPrice - priceReduction;
-        this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
-        this.updatePurchaseState(updatedIngredients);
-    }
 
     orderHandler = () => {
         this.setState({ordering: true})
