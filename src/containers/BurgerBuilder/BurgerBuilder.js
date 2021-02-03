@@ -16,7 +16,6 @@ class BurgerBuilder extends Component{
     //     super();
     // }
     state = {
-        totalPrice: 4,
         purchasable: false,
         ordering: false,
         loading: false,
@@ -77,7 +76,7 @@ class BurgerBuilder extends Component{
             ingredients={this.state.ingredients}
             orderCancelled={this.orderCancelHandler}
             orderContinue={this.orderContinueHandler}
-            price={this.state.totalPrice}
+            price={this.props.price}
         />
         }
         
@@ -94,7 +93,7 @@ class BurgerBuilder extends Component{
                 disabled={disableInfo}
                 ingredientAdded={this.props.onIngredientAdded}
                 ingredientRemoved={this.props.onIngredientRemoved}
-                price={this.state.totalPrice}
+                price={this.props.price}
                 purchasable={this.state.purchasable}
                 ordered={this.orderHandler}
             />
@@ -118,7 +117,8 @@ class BurgerBuilder extends Component{
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice
     }
 }
 
