@@ -7,9 +7,9 @@ import { createStore } from 'redux'
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import reducer from './store/reducers/reducer';
+import burgerBuilderReducer from './store/reducers/burgerBuilder';
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const app = (
   <Provider store={store}>
