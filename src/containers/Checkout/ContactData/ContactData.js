@@ -106,7 +106,6 @@ class ContactData extends Component{
             },
         },
         formIsValid: false,
-        loading: false,
     }
 
     orderHandler = (event) => {
@@ -210,7 +209,8 @@ class ContactData extends Component{
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        loading: state.loading
     }
 }
 
