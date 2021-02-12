@@ -38,10 +38,10 @@ class Auth extends Component {
     }
     render() {
         const formElementsArray = [];
-        for (let key in this.state.orderForm) {
+        for (let key in this.state.controls) {
             formElementsArray.push({
                 id: key,
-                config: this.state.orderForm[key]
+                config: this.state.controls[key]
             });
         }
         const form = formElementsArray.map(formElement => (
@@ -61,7 +61,6 @@ class Auth extends Component {
                 <form>
                     {form} 
                     <Button btnType="Success">Submit</Button>
-                    TESTING
                 </form>
             </div>
         );
