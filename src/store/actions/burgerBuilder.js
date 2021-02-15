@@ -39,3 +39,4 @@ export const initIngredients = () => {
                 dispatch(fetchIngredientsFailed())
             })    }
 };
+
