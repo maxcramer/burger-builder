@@ -5,7 +5,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import './NavigationItems.css';
 
-const navigationItems = () => (
+const navigationItems = (props) => (
     <ul className="NavigationItems">
         <NavigationItem exact link="/" >
             Burger Builder
@@ -13,9 +13,10 @@ const navigationItems = () => (
         <NavigationItem link="/orders">
             Orders
         </NavigationItem>
-        <NavigationItem link="/auth">
-            Authenticate
-        </NavigationItem>
+        { !props.isAuthenticated 
+            ? <NavigationItem link="/auth">Authenticate</NavigationItem> 
+            : <NavigationItem link="/logout" >Logout</NavigationItem>
+        }
     </ul>
 );
 
