@@ -9,13 +9,18 @@ import NavigationItem from './NavigationItem/NavigationItem';
 configure({adapter: new Adapter()}); // this line connects enzyme up!! without it enzyme WILL NOT WORK
 
 describe('<NavigationItems />', () => {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<NavigationItems />);
+    });
+
     it('should render 2 nav <NavigationItems /> if not authenticated', () => {
-        const wrapper = shallow(<NavigationItems />);
         expect(wrapper.find(NavigationItem)).toHaveLength(2)
     });
 
     it('should render 3 nav <NavigationItem /> if authenticated', () => {
-        const wrapper = shallow(<NavigationItems isAuthenticated />);
+        wrapper.setProps({isAuthenticated: true})
         expect(wrapper.find(NavigationItem)).toHaveLength(3)
     })
 });
