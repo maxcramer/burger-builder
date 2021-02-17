@@ -1,10 +1,16 @@
-import { configure } from 'enzyme';
+import React from 'react';
+
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
+import NavigationItems from './NavigationItems';
+import NavigationItem from './NavigationItem/NavigationItem';
 
 configure({adapter: new Adapter()}); // this line connects enzyme up!! without it enzyme WILL NOT WORK
 
 describe('<NavigationItems />', () => {
     it('should render 2 nav <NavigationItems /> if not authenticated', () => {
-        adapter
+        const wrapper = shallow(<NavigationItems />);
+        expect(wrapper.find(NavigationItem)).toHaveLength(2)
     })
 });
