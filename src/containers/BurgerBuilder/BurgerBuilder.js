@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from '../../axios-orders';
 
@@ -11,20 +11,22 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 
-export class BurgerBuilder extends Component{
+const BurgerBuilder = props => {
     // constructor(props) {
     //     super();
     // }
-    state = {
-        ordering: false,
+    // state = {
+    //     ordering: false,
 
-    }
+    // }
 
-    componentDidMount () {
-        this.props.onInitIngredients()
-    }
+    const [ordering, setOrdering] = useState(false);
 
-    updatePurchaseState (ingredients) {
+    useEffect(() => {
+        props.onInitIngredients()
+    }, [])
+
+    const updatePurchaseState = (ingredients) => {
         const sum = Object.keys(ingredients)
             .map(igKey => {
                 return ingredients[igKey]
@@ -36,71 +38,67 @@ export class BurgerBuilder extends Component{
     }
 
 
-    orderHandler = () => {
-        if(this.props.isAuthenticated) {
-            this.setState({ordering: true})
+    const orderHandler = () => {
+        if(props.isAuthenticated) {
+            setOrdering(true);
         } else {
-            this.props.onSetAuthRedirectPath('/checkout');
-            this.props.history.push('/auth');
+            props.onSetAuthRedirectPath('/checkout');
+            props.history.push('/auth');
         }
     }
 
-    orderCancelHandler = () => {
-        this.setState({ordering: false})
+    const orderCancelHandler = () => {
+        setOrdering(false);
     }
 
-    orderContinueHandler = () => {
-        this.props.onInitPurchase();
+    const orderContinueHandler = () => {
+        props.onInitPurchase();
         // alert('You continue!'
-        this.props.history.push('/checkout');
+        props.history.push('/checkout');
     }
 
-    render() {
         const disableInfo = {
-            ...this.props.ings
+            ...props.ings
         };
         for( let key in disableInfo ) {
             disableInfo[key] = disableInfo[key] <= 0;
         }
         let orderSummary = null;
-        let burger = this.props.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
+        let burger = props.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
 
-        if(this.props.ings) {
+        if(props.ings) {
             burger = (
                 <Aux>
-                    <Burger ingredients={this.props.ings}/>
+                    <Burger ingredients={props.ings}/>
             <BuildControls 
                 disabled={disableInfo}
-                ingredientAdded={this.props.onIngredientAdded}
-                ingredientRemoved={this.props.onIngredientRemoved}
-                price={this.props.price}
-                purchasable={this.updatePurchaseState(this.props.ings)}
-                ordered={this.orderHandler}
-                isAuth={this.props.isAuthenticated}
+                ingredientAdded={props.onIngredientAdded}
+                ingredientRemoved={props.onIngredientRemoved}
+                price={props.price}
+                purchasable={updatePurchaseState(props.ings)}
+                ordered={orderHandler}
+                isAuth={props.isAuthenticated}
             />
     
                 </Aux>
             );
             orderSummary =  <OrderSummary 
-            ingredients={this.props.ings}
-            orderCancelled={this.orderCancelHandler}
-            orderContinue={this.orderContinueHandler}
-            price={this.props.price}
+            ingredients={props.ings}
+            orderCancelled={orderCancelHandler}
+            orderContinue={orderContinueHandler}
+            price={props.price}
         />
         }
         
 
         return (
             <Aux>
-                <Modal show={this.state.ordering} modalClosed={this.orderCancelHandler}>
+                <Modal show={ordering} modalClosed={orderCancelHandler}>
                    {orderSummary}
                 </Modal>
                 {burger}
             </Aux>
         );
-    }
-
-
 };
 
 const mapStateToProps = state => {
