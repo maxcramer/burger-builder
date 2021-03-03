@@ -58,8 +58,8 @@ export const fetchOrdersStart = () => {
 
 export const fetchOrders = (token, userId) => {
     return {
-        type: actionTypes.fetchOrders,
+        type: actionTypes.FETCH_ORDERS,
         token: token,
         userId: userId
-    }
-}
+    };
+};
